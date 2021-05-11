@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { createContext, FC } from 'react'
 import { Pane, majorScale } from 'evergreen-ui'
 import Container from '../components/container'
 import Hero from '../components/hero'
@@ -46,10 +46,10 @@ Home.defaultProps = {
   },
 }
 
-export function getStaticProps() {
+export function getStaticProps(ctx) {
   return {
     props: {
-      content: home.published
+      content: ctx.preview ? home.draft : home.published
     }
   }
 }
